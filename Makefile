@@ -1,5 +1,3 @@
-DIRNAME = $(shell basename $(CURDIR))
-
 # Misc
 .DEFAULT_GOAL = help
 .PHONY        : help build dev down permission bash prod
