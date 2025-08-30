@@ -3,7 +3,7 @@ services:
         build:
             context: .
             target: frankenphp
-        image: foundry-timestampable-mockclock-app-php
+        image: ux-reproducer-app-php
         restart: unless-stopped
         environment:
             SERVER_NAME: ${SERVER_NAME:-localhost}, php:80
@@ -17,6 +17,8 @@ services:
             MERCURE_EXTRA_DIRECTIVES: demo
             FRANKENPHP_WORKER_CONFIG: watch
             APP_ENV: "${APP_ENV:-dev}"
+            SYMFONY_VERSION: ${SYMFONY_VERSION:-}
+            STABILITY: ${STABILITY:-stable}
         extra_hosts:
             # Ensure that host.docker.internal is correctly defined on Linux
             - host.docker.internal:host-gateway
@@ -41,27 +43,6 @@ services:
                 protocol: udp
         tty: true
 
-    ###> doctrine/doctrine-bundle ###
-    database:
-        image: postgres:${POSTGRES_VERSION:-16}-alpine
-        restart: unless-stopped
-        environment:
-            POSTGRES_DB: ${POSTGRES_DB:-app}
-            # You should definitely change the password in production
-            POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-!ChangeMe!}
-            POSTGRES_USER: ${POSTGRES_USER:-app}
-        healthcheck:
-            test: [ "CMD", "pg_isready", "-d", "${POSTGRES_DB:-app}", "-U", "${POSTGRES_USER:-app}" ]
-            timeout: 5s
-            retries: 5
-            start_period: 60s
-        volumes:
-            - database_data:/var/lib/postgresql/data:rw
-    ###< doctrine/doctrine-bundle ###
-
 volumes:
     caddy_data:
     caddy_config:
-    ###> doctrine/doctrine-bundle ###
-    database_data:
-    ###< doctrine/doctrine-bundle ###
