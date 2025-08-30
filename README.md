@@ -9,3 +9,8 @@ Project reproducer for issue [#947](https://github.com/zenstruck/foundry/issues/
 3. Run `make dev` to start project
 4. Run `make bash` to access the php container
 5. Run `make down` to stop the containers
+
+## Reproducing the bug:
+
+1. Install the assets with the package manager of your choice: `pnpm install`
+2. Try to build the assets: `pnpm dev`
