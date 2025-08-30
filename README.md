@@ -1,4 +1,4 @@
-# Foundry + Timestampable + MockClock
+# Symfony ux reproducer
 
 Project reproducer for issue [#947](https://github.com/zenstruck/foundry/issues/947)
 
