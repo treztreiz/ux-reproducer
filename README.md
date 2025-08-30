@@ -1,6 +1,6 @@
 # Symfony ux reproducer
 
-Project reproducer for issue [#947](https://github.com/zenstruck/foundry/issues/947)
+Project reproducer for issue [#3060](https://github.com/symfony/ux/issues/3060)
 
 ## Getting Started
 
